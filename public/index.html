@@ -10,12 +10,17 @@
 </head>
 <body>
 
-	<h1>Index</h1>
-	<a href="login.html">login</a>
+	<div class="not-logged-in" id="not-logged-in" style="display: none">
+		<h2 class="welcome-text">Welcome, please login</h2>
+		<a href="login.html" class="sign-in-btn">login</a>
+	</div>
 
-	<div id="sign-in-status"></div>
-	<div id="sign-in"></div>
-	<div id="account-details"></div>
+	<div class="app" id="app" style="display: none">
+		<div id="account-details"></div>
+		<button id="sign-out-btn">Sign out</button>
+	</div>
+
+
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>

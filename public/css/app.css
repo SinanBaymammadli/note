@@ -446,4 +446,19 @@ template {
   display: none;
 }
 
+.welcome-text {
+  margin: 0;
+  padding: 50px 0;
+}
+
+.not-logged-in {
+  min-height: 100vh;
+  text-align: center;
+}
+
+.sign-in-btn {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
 /*# sourceMappingURL=app.css.map */
