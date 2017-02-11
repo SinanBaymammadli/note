@@ -6,11 +6,14 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Note App</title>
+	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
 	<link rel="stylesheet" type="text/css" href="./css/app.css">
 </head>
 <body>
 
 	<h1>Login</h1>
+
+	<div id="firebaseui-auth-container"></div>
 
 
 <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
@@ -25,6 +28,26 @@
   };
   firebase.initializeApp(config);
 </script>
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+<script type="text/javascript">
+	// FirebaseUI config.
+	var uiConfig = {
+	  signInSuccessUrl: '/',
+	  signInOptions: [
+	    // Leave the lines as is for the providers you want to offer your users.
+	    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+	    firebase.auth.EmailAuthProvider.PROVIDER_ID
+	  ],
+	  // Terms of service url.
+	  tosUrl: '<your-tos-url>'
+	};
+
+	// Initialize the FirebaseUI Widget using Firebase.
+	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+	// The start method will wait until the DOM is loaded.
+	ui.start('#firebaseui-auth-container', uiConfig);
+</script>
+
 <script src="./js/app.js"></script>
 
 </body>
