@@ -1,10 +1,14 @@
+
 .app {
 	min-height: 100vh;
 	background-color: $bg-color-dark;
 }
 
 .content {
-	padding: 15px 15px 70px 15px;
+	padding: 15px;
+	max-width: 600px;
+	margin: 0 auto;
+	position: relative;
 }
 
 .card {
@@ -30,7 +34,15 @@
 
 .delete-note {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 5px;
+	right: 5px;
 	cursor: pointer;
+
+	svg {
+		pointer-events: none;
+	}
+}
+
+.text-login {
+	text-align: center;
 }

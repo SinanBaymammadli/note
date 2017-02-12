@@ -485,7 +485,10 @@ template {
 }
 
 .content {
-  padding: 15px 15px 70px 15px;
+  padding: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .card {
@@ -515,9 +518,17 @@ template {
 
 .delete-note {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
+}
+
+.delete-note svg {
+  pointer-events: none;
+}
+
+.text-login {
+  text-align: center;
 }
 
 .note-full-container {
@@ -564,7 +575,8 @@ template {
 }
 
 .note-full-content {
-  padding: 30px 100px;
+  padding: 30px;
+  font-size: 22px;
 }
 
 .overflow-hidden {
@@ -580,7 +592,7 @@ template {
   -webkit-box-pack: center;
   justify-content: center;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-  right: 20px;
+  right: 10%;
   bottom: 20px;
   width: 56px;
   height: 56px;
@@ -631,14 +643,26 @@ template {
   padding: 15px;
 }
 
-.add-new-note-content {
-  padding: 30px;
-}
-
 .new-note-area {
   width: 100%;
   max-width: 100%;
-  min-height: 50vh;
+  min-height: 65vh;
+}
+
+.add-new-note-content textarea {
+  padding: 30px;
+  font-size: 22px;
+  box-sizing: border-box;
+}
+
+.new-note-btn {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  background-color: #03A9F4;
+  border: none;
+  color: #fff;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 /*# sourceMappingURL=app.css.map */

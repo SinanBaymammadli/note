@@ -19,7 +19,7 @@ initApp = function() {
 			const newNoteContent = document.getElementById('new-note');
 			const addNewNoteBtn = document.getElementById('new-note-btn');
 			const body = document.getElementById('body');
-			const content = document.getElementById('content');
+			const notesContainer = document.getElementById('notes');
 			const showNoteBtn = document.getElementsByClassName('note');
 			const noteFullContainer = document.getElementById('note-full-container');
 			const hideNoteBtn = document.getElementById('hide-note-btn');
@@ -52,7 +52,7 @@ initApp = function() {
 
 			dbRefNote.on('value', function(snap) {
 
-				content.innerHTML = "";
+				notesContainer.innerHTML = "";
 
 				snap.forEach(function (dbNotes) {
 					renderNotes(dbNotes);
@@ -80,7 +80,7 @@ initApp = function() {
 				}
 			}
 
-			function deleteNote(note, event) {
+			function deleteNote(note) {
 				const noteId = note.srcElement.id;
 
 				if (confirm('Delete this note?')) {
@@ -113,10 +113,10 @@ initApp = function() {
 			};
 
 			function renderNotes(notes) {
-				content.innerHTML += "<div class='card'><span class='delete-note' id='"+ notes.key +"'>X</span><div class='note' id='"
-													+notes.key+"'><p>"+
-													notes.val().content.substring(0,10)
-													+"</p><p>"+ notes.val().created_at +"</p></div></div>";
+				notesContainer.innerHTML += "<div class='card'><span class='delete-note' id='"+ notes.key +"'><svg style=width:24px;height:24px' viewBox='0 0 24 24'><path fill='#212121' d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' /></svg></span><div class='note' id='"
+						+notes.key+"'><p>"+
+						notes.val().content.substring(0,20).replace(/<(?:.|\n)*?>/gm, '')
+						+"</p><p>"+ notes.val().created_at +"</p></div></div>";
 			};
 
 			function addEventListenerToNotes() {
@@ -144,7 +144,7 @@ initApp = function() {
 				const noteRef = dbRef.ref('users/' + uid + '/notes/' + noteId);
 
 				noteRef.on('value', function(note) {
-					noteFullContent.innerHTML = note.val().content;
+					noteFullContent.innerText = note.val().content;
 				});
 
 				noteFullContainer.classList.add('note-full-container-visible');

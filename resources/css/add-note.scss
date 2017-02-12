@@ -4,7 +4,7 @@
 	align-items: center;
 	justify-content: center;
 	box-shadow: 0 6px 10px 0 rgba(0,0,0,0.3);
-	right: 20px;
+	right: 10%;
 	bottom: 20px;
 	width: 56px;
 	height: 56px;
@@ -50,12 +50,27 @@
 	padding: 15px;
 }
 
-.add-new-note-content {
-	padding: 30px;
-}
-
 .new-note-area {
 	width: 100%;
 	max-width: 100%;
-	min-height: 50vh;
+	min-height: 65vh;
+}
+
+.add-new-note-content {
+
+	textarea {
+		padding: 30px;
+		font-size: 22px;
+		box-sizing: border-box;
+	}
+}
+
+.new-note-btn {
+	width: 100%;
+	padding: 10px 15px;
+	text-align: center;
+	background-color: $primary-color;
+	border: none;
+	color: #fff;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
