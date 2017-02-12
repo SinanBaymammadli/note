@@ -1,14 +1,36 @@
 .welcome-text {
 	margin: 0;
-	padding: 50px 0;
+	font-size: 2.2em;
+	padding: 50px 0 100px 0;
+	color: $secondary-text-color;
 }
 
 .not-logged-in {
 	min-height: 100vh;
 	text-align: center;
+	background-color: $primary-color;
 }
 
 .sign-in-btn {
 	font-size: 22px;
 	text-transform: uppercase;
 }
+
+#firebaseui-auth-container {
+	position: relative;
+	will-change: transform;
+	transition: transform 1s ease-in;
+	animation: swip-in 1s ease;
+	background-color: $primary-color;
+}
+
+@keyframes swip-in {
+	from {transform: translateY(20px);}
+	to {transform: translateY(0);}
+}
+
+/* @keyframes swip-in {
+	0% {top: 200px;}
+	90% {top: -20px;}
+	100% {top: 0px;}
+} */

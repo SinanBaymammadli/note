@@ -46,3 +46,14 @@
 .text-login {
 	text-align: center;
 }
+
+.spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	svg {
+		height: 50px;
+		width: 50px;
+	}
+}

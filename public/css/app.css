@@ -448,12 +448,15 @@ template {
 
 .welcome-text {
   margin: 0;
-  padding: 50px 0;
+  font-size: 2.2em;
+  padding: 50px 0 100px 0;
+  color: #FFFFFF;
 }
 
 .not-logged-in {
   min-height: 100vh;
   text-align: center;
+  background-color: #2196F3;
 }
 
 .sign-in-btn {
@@ -461,6 +464,45 @@ template {
   text-transform: uppercase;
 }
 
+#firebaseui-auth-container {
+  position: relative;
+  will-change: transform;
+  -webkit-transition: -webkit-transform 1s ease-in;
+  transition: -webkit-transform 1s ease-in;
+  transition: transform 1s ease-in;
+  transition: transform 1s ease-in, -webkit-transform 1s ease-in;
+  -webkit-animation: swip-in 1s ease;
+  animation: swip-in 1s ease;
+  background-color: #2196F3;
+}
+
+@-webkit-keyframes swip-in {
+  from {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes swip-in {
+  from {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+/* @keyframes swip-in {
+	0% {top: 200px;}
+	90% {top: -20px;}
+	100% {top: 0px;}
+} */
 .main-header {
   height: 56px;
   padding: 0 15px;
@@ -470,7 +512,7 @@ template {
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  background-color: #03A9F4;
+  background-color: #2196F3;
   color: #FFFFFF;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
@@ -531,6 +573,20 @@ template {
   text-align: center;
 }
 
+.spinner {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.spinner svg {
+  height: 50px;
+  width: 50px;
+}
+
 .note-full-container {
   position: fixed;
   top: 0;
@@ -571,12 +627,14 @@ template {
 
 .hide-note-btn {
   cursor: pointer;
-  padding: 15px;
+  padding: 15px 5px;
 }
 
-.note-full-content {
+#note-full-content {
   padding: 30px;
   font-size: 22px;
+  min-height: calc(100vh - 60px);
+  box-sizing: border-box;
 }
 
 .overflow-hidden {
@@ -659,7 +717,7 @@ template {
   width: 100%;
   padding: 10px 15px;
   text-align: center;
-  background-color: #03A9F4;
+  background-color: #2196F3;
   border: none;
   color: #fff;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);

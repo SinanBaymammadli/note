@@ -27,6 +27,8 @@ initApp = function() {
 			const addNewNoteContainer = document.getElementById('add-new-note-container');
 			const hideAddNewNoteBtn = document.getElementById('hide-add-new-note');
 			const deleteNoteBtn = document.getElementsByClassName('delete-note');
+			const spinner = document.getElementById('spinner');
+			const noteFullContent = document.getElementById('note-full-content');
 
 			const dbRef = firebase.database();
 			const dbRefNote = dbRef.ref('users/' + uid + '/notes');
@@ -36,6 +38,7 @@ initApp = function() {
 			hideNoteBtn.addEventListener('click', hideNote);
 			showAddNoteBtn.addEventListener('click', showAddNote);
 			hideAddNewNoteBtn.addEventListener('click', hideAddNewNoteContainer);
+			noteFullContent.addEventListener('dblclick', updateNote);
 
 			user.getToken().then(function(accessToken) {
 
@@ -46,7 +49,9 @@ initApp = function() {
 
 				document.getElementById('sign-out-btn').addEventListener('click', function() {
 					firebase.auth().signOut();
-				})
+				});
+
+				showSpinner();
 
 			});
 
@@ -58,10 +63,15 @@ initApp = function() {
 					renderNotes(dbNotes);
 				});
 
+				hideSpinner();
 				addEventListenerToNotes();
 				addEventListenerToDeleteNote();
 
 			});
+
+			function updateNote(note) {
+				console.log('hey');
+			}
 
 			function addNewNote() {
 				if (newNoteContent.value !== "") {
@@ -80,6 +90,14 @@ initApp = function() {
 				}
 			}
 
+			function hideSpinner() {
+				spinner.style.display = "none";
+			}
+
+			function showSpinner() {
+				spinner.style.display = "flex";
+			}
+
 			function deleteNote(note) {
 				const noteId = note.srcElement.id;
 
@@ -88,7 +106,6 @@ initApp = function() {
 				} else {
 					return;
 				}
-
 			}
 
 			function getDate() {
@@ -121,8 +138,8 @@ initApp = function() {
 
 			function addEventListenerToNotes() {
 				for (var i = 0; i < showNoteBtn.length; i++) {
-					showNoteBtn[i].addEventListener('click', function (e) {
-						showNote(e);
+					showNoteBtn[i].addEventListener('click', function () {
+						showNote(this.id);
 					});
 
 				}
@@ -137,10 +154,7 @@ initApp = function() {
 				}
 			}
 
-			function showNote(e) {
-				const noteId = e.srcElement.id;
-				const noteFullContent = document.getElementById('note-full-content');
-
+			function showNote(noteId) {
 				const noteRef = dbRef.ref('users/' + uid + '/notes/' + noteId);
 
 				noteRef.on('value', function(note) {
@@ -167,4 +181,3 @@ initApp = function() {
 window.addEventListener('load', function() {
 	initApp()
 });
-
