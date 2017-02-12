@@ -1,0 +1,45 @@
+.note-full-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.note-full {
+	position: relative;
+	width: 100%;
+	min-width: 100%;
+	background: #FFF;
+	transform: translateX(105%);
+	box-shadow: 2px 0 12px rgba(0,0,0,0.4);
+	will-change: transform;
+	transition: transform .3s cubic-bezier(0,0,0.3,1);
+	z-index: 2;
+	overflow: auto;
+	max-height: 100%;
+	min-height: 100%;
+}
+
+.note-full-container-visible {
+	pointer-events: auto;
+}
+
+.note-full-container-visible .note-full {
+	transform: none;
+}
+
+.hide-note-btn {
+	cursor: pointer;
+	padding: 15px;
+}
+
+.note-full-content {
+	padding: 30px 100px;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}

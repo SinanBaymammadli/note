@@ -1,0 +1,36 @@
+.app {
+	min-height: 100vh;
+	background-color: $bg-color-dark;
+}
+
+.content {
+	padding: 15px 15px 70px 15px;
+}
+
+.card {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 30px;
+	margin: 0 0 20px 0;
+	background-color: $bg-color;
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+}
+
+.note {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+
+	p{
+		margin: 5px 0;
+	}
+}
+
+.delete-note {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}

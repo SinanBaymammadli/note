@@ -461,4 +461,184 @@ template {
   text-transform: uppercase;
 }
 
+.main-header {
+  height: 56px;
+  padding: 0 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  background-color: #03A9F4;
+  color: #FFFFFF;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sign-out-btn {
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.content {
+  padding: 15px 15px 70px 15px;
+}
+
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 30px;
+  margin: 0 0 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.note {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.note p {
+  margin: 5px 0;
+}
+
+.delete-note {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.note-full-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.note-full {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  background: #FFF;
+  -webkit-transform: translateX(105%);
+  transform: translateX(105%);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
+  will-change: transform;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  z-index: 2;
+  overflow: auto;
+  max-height: 100%;
+  min-height: 100%;
+}
+
+.note-full-container-visible {
+  pointer-events: auto;
+}
+
+.note-full-container-visible .note-full {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.hide-note-btn {
+  cursor: pointer;
+  padding: 15px;
+}
+
+.note-full-content {
+  padding: 30px 100px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.add-note {
+  position: fixed;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #FF5252;
+  cursor: pointer;
+}
+
+.add-new-note-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.add-new-note {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  background: #FFF;
+  -webkit-transform: translateY(105%);
+  transform: translateY(105%);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
+  will-change: transform;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  z-index: 2;
+  overflow: auto;
+  min-height: 100vh;
+}
+
+.add-new-note-container-visible {
+  pointer-events: auto;
+}
+
+.add-new-note-container-visible .add-new-note {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.hide-add-new-note {
+  cursor: pointer;
+  padding: 15px;
+}
+
+.add-new-note-content {
+  padding: 30px;
+}
+
+.new-note-area {
+  width: 100%;
+  max-width: 100%;
+  min-height: 50vh;
+}
+
 /*# sourceMappingURL=app.css.map */
