@@ -711,6 +711,23 @@ template {
   }
 }
 
+.account-details {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.account-img {
+  margin: 0 10px 0 0;
+}
+
+.account-img img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 .note-full-container {
   position: fixed;
   top: 0;

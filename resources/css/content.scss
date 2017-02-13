@@ -121,3 +121,19 @@
 	50%{transform: translateX(10px)}
 	100%{transform: translateX(0)}
 }
+
+
+.account-details {
+	display: flex;
+	align-items: center;
+}
+
+.account-img {
+	margin: 0 10px 0 0;
+
+	img{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+	}
+}

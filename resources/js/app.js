@@ -11,7 +11,8 @@ initApp = function() {
 				document.getElementById('not-logged-in').style.display = 'none';
 				document.getElementById('app').style.display = 'block';
 
-				document.getElementById('account-details').textContent = displayName;
+				document.getElementById('account-name').textContent = displayName;
+				document.getElementById('account-img').setAttribute('src', photoURL);
 
 				document.getElementById('sign-out-btn').addEventListener('click', function() {
 					firebase.auth().signOut();
@@ -20,7 +21,7 @@ initApp = function() {
 				if (window.navigator.onLine) {
 					showSpinner();
 				} else {
-					content.innerHTML = "you are offline";
+					showMessage("You are offline but you can still add notes!");
 				}
 
 			});
@@ -271,13 +272,22 @@ initApp = function() {
 
 window.addEventListener('load', function() {
 	initApp();
-	//registerServiceWorker();
+	registerServiceWorker();
 });
 
 
 //registering service worker
-/*function registerServiceWorker() {
+function registerServiceWorker() {
 	if ('serviceWorker' in navigator) {
-	  navigator.serviceWorker.register('/service-worker.js');
+		navigator.serviceWorker.register('/service-worker.js', { scope: './' })
+		.then(function() {
+			alert('registered service worker');
+		})
+		.catch(function(error) {
+			console.error('service worker failed to register: ' + error);
+		});
 	}
-};*/
+};
+
+
+
