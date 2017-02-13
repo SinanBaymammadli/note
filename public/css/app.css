@@ -471,38 +471,41 @@ template {
   transition: -webkit-transform 1s ease-in;
   transition: transform 1s ease-in;
   transition: transform 1s ease-in, -webkit-transform 1s ease-in;
-  -webkit-animation: swip-in 1s ease;
-  animation: swip-in 1s ease;
+  -webkit-animation: swip-in 1.5s ease;
+  animation: swip-in 1.5s ease;
   background-color: #2196F3;
 }
 
 @-webkit-keyframes swip-in {
-  from {
+  0% {
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
   }
-  to {
+  20% {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
 
 @keyframes swip-in {
-  from {
+  0% {
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
   }
-  to {
+  20% {
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
 
-/* @keyframes swip-in {
-	0% {top: 200px;}
-	90% {top: -20px;}
-	100% {top: 0px;}
-} */
 .main-header {
   height: 56px;
   padding: 0 15px;
@@ -630,10 +633,23 @@ template {
   padding: 15px 5px;
 }
 
-#note-full-content {
-  padding: 30px;
+.note-full-content {
   font-size: 22px;
   min-height: calc(100vh - 60px);
+  box-sizing: border-box;
+}
+
+.note-full-content div {
+  padding: 31px;
+}
+
+.note-full-content textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: calc(100vh - 61px);
+  padding: 30px;
+  font-size: 22px;
   box-sizing: border-box;
 }
 
@@ -667,6 +683,7 @@ template {
   bottom: 0;
   overflow: hidden;
   pointer-events: none;
+  z-index: 3;
 }
 
 .add-new-note {
@@ -678,10 +695,10 @@ template {
   transform: translateY(105%);
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
   will-change: transform;
-  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-  transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-  transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1), -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
   z-index: 2;
   overflow: auto;
   min-height: 100vh;
@@ -704,7 +721,7 @@ template {
 .new-note-area {
   width: 100%;
   max-width: 100%;
-  min-height: 65vh;
+  min-height: calc(100vh - 57px);
 }
 
 .add-new-note-content textarea {
@@ -713,11 +730,12 @@ template {
   box-sizing: border-box;
 }
 
-.new-note-btn {
-  width: 100%;
+.btn {
   padding: 10px 15px;
   text-align: center;
-  background-color: #2196F3;
+  background-color: #FF5252;
+  cursor: pointer;
+  text-transform: uppercase;
   border: none;
   color: #fff;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);

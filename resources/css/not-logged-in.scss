@@ -20,17 +20,12 @@
 	position: relative;
 	will-change: transform;
 	transition: transform 1s ease-in;
-	animation: swip-in 1s ease;
+	animation: swip-in 1.5s ease;
 	background-color: $primary-color;
 }
 
 @keyframes swip-in {
-	from {transform: translateY(20px);}
-	to {transform: translateY(0);}
+	0% {transform: translateY(20px);}
+	20% {transform: translateY(20px);}
+	100% {transform: translateY(0);}
 }
-
-/* @keyframes swip-in {
-	0% {top: 200px;}
-	90% {top: -20px;}
-	100% {top: 0px;}
-} */

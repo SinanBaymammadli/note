@@ -70,16 +70,17 @@
 						    <path fill="#fff" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" />
 						</svg>
 					</span>
+
+					<button id="new-note-btn" class="new-note-btn btn" tabindex="-1">Add</button>
 				</header>
 
 				<div class="add-new-note-content">
 					<textarea type="text" name="note" id="new-note" class="new-note-area" tabindex="-1" placeholder="Add your note here"></textarea>
-					<button id="new-note-btn" class="new-note-btn" tabindex="-1">Add</button>
 				</div>
 			</div>
 		</div>
 
-		<div id="note-full-container">
+		<div class="note-full-container" id="note-full-container">
 			<div class="note-full">
 				<header class="main-header">
 					<span class="hide-note-btn" id="hide-note-btn">
@@ -87,8 +88,11 @@
 						    <path fill="#fff" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
 						</svg>
 					</span>
+
+					<button id='save-change' class="save-change-btn btn" style="display: none">Save changes</button>
 				</header>
 				<div class="note-full-content" id="note-full-content">
+
 				</div>
 			</div>
 		</div>

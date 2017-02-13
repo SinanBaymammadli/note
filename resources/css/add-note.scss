@@ -21,6 +21,7 @@
 	bottom: 0;
 	overflow: hidden;
 	pointer-events: none;
+	z-index: 3;
 }
 
 .add-new-note {
@@ -31,7 +32,7 @@
 	transform: translateY(105%);
 	box-shadow: 2px 0 12px rgba(0,0,0,0.4);
 	will-change: transform;
-	transition: transform .3s cubic-bezier(0,0,0.3,1);
+	transition: transform .3s ease-out;
 	z-index: 2;
 	overflow: auto;
 	min-height: 100vh;
@@ -53,7 +54,7 @@
 .new-note-area {
 	width: 100%;
 	max-width: 100%;
-	min-height: 65vh;
+	min-height: calc(100vh - 57px);
 }
 
 .add-new-note-content {
@@ -65,11 +66,12 @@
 	}
 }
 
-.new-note-btn {
-	width: 100%;
+.btn {
 	padding: 10px 15px;
 	text-align: center;
-	background-color: $primary-color;
+	background-color: $accent-color;
+	cursor: pointer;
+	text-transform: uppercase;
 	border: none;
 	color: #fff;
 	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
