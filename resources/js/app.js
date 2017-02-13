@@ -281,7 +281,7 @@ function registerServiceWorker() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/service-worker.js', { scope: './' })
 		.then(function() {
-			alert('registered service worker');
+			console.log('registered service worker');
 		})
 		.catch(function(error) {
 			console.error('service worker failed to register: ' + error);
