@@ -542,7 +542,6 @@ template {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  padding: 30px;
   margin: 0 0 20px 0;
   background-color: #ffffff;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
@@ -550,6 +549,7 @@ template {
 
 .note {
   width: 100%;
+  padding: 30px;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: justify;
@@ -563,8 +563,9 @@ template {
 
 .delete-note {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0;
+  right: 0;
+  padding: 5px 5px 1px 5px;
   cursor: pointer;
 }
 
@@ -588,6 +589,126 @@ template {
 .spinner svg {
   height: 50px;
   width: 50px;
+}
+
+.message {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  padding: 15px 30px;
+  border-radius: 3px;
+  background-color: #212121;
+  color: #FFFFFF;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 10;
+}
+
+.message.showing {
+  -webkit-animation: toast 4s ease-out;
+  animation: toast 4s ease-out;
+  display: block;
+  opacity: 0;
+}
+
+@-webkit-keyframes toast {
+  0% {
+    display: block;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  10% {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  90% {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+}
+
+@keyframes toast {
+  0% {
+    display: block;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  10% {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  90% {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+}
+
+.no-notes {
+  font-size: 44px;
+  color: #a2a2a2;
+}
+
+.add-from-here {
+  font-size: 26px;
+  color: #a2a2a2;
+  position: fixed;
+  right: 28%;
+  bottom: 20px;
+  margin: 12px 15px 12px 0;
+  -webkit-animation: dance 2s ease-in-out 10;
+  animation: dance 2s ease-in-out 10;
+}
+
+@-webkit-keyframes dance {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes dance {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  50% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
 }
 
 .note-full-container {

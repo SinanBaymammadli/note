@@ -15,7 +15,6 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 30px;
 	margin: 0 0 20px 0;
 	background-color: $bg-color;
 	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
@@ -23,6 +22,7 @@
 
 .note {
 	width: 100%;
+	padding: 30px;
 	display: flex;
 	justify-content: space-between;
 	cursor: pointer;
@@ -34,8 +34,9 @@
 
 .delete-note {
 	position: absolute;
-	top: 5px;
-	right: 5px;
+	top: 0;
+	right: 0;
+	padding: 5px 5px 1px 5px;
 	cursor: pointer;
 
 	svg {
@@ -56,4 +57,67 @@
 		height: 50px;
 		width: 50px;
 	}
+}
+
+.message {
+	position: absolute;
+	bottom: 20px;
+	left: 10%;
+	padding: 15px 30px;
+	border-radius: 3px;
+	background-color: $primary-text-color;
+	color: $secondary-text-color;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+	display: none;
+	z-index: 10;
+
+	&.showing {
+		animation: toast 4s ease-out;
+		display: block;
+		opacity: 0;
+	}
+}
+
+@keyframes toast {
+	0% {
+		display: block;
+		opacity: 0;
+		transform: translateY(5px);
+	}
+	10% {
+		display: block;
+		opacity: 1;
+		transform: translateY(0);
+	}
+	90% {
+		display: block;
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		display: none;
+		opacity: 0;
+		transform: translateY(5px);
+	}
+}
+
+.no-notes {
+	font-size: 44px;
+	color: #a2a2a2;
+}
+
+.add-from-here {
+	font-size: 26px;
+	color: #a2a2a2;
+	position: fixed;
+	right: 28%;
+   bottom: 20px;
+   margin: 12px 15px 12px 0;
+   animation: dance 2s ease-in-out 10;
+}
+
+@keyframes dance {
+	0%{transform: translateX(0)}
+	50%{transform: translateX(10px)}
+	100%{transform: translateX(0)}
 }

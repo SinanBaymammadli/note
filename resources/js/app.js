@@ -17,7 +17,11 @@ initApp = function() {
 					firebase.auth().signOut();
 				});
 
-				showSpinner();
+				if (window.navigator.onLine) {
+					showSpinner();
+				} else {
+					content.innerHTML = "you are offline";
+				}
 
 			});
 
@@ -44,6 +48,10 @@ initApp = function() {
 			const spinner = document.getElementById('spinner');
 			const noteFullContent = document.getElementById('note-full-content');
 			const saveChangeBtn = document.getElementById('save-change');
+			const content = document.getElementById('content');
+			const message = document.getElementById('message');
+			const dblClickMsg = document.getElementById('dbl-click');
+			let dblclick = 0;
 
 			// DB reference
 			const dbRef = firebase.database();
@@ -64,9 +72,15 @@ initApp = function() {
 
 				notesContainer.innerHTML = "";
 
-				snap.forEach(function (dbNote) {
-					renderNote(dbNote);
-				});
+				if (snap.val() === null) {
+					notesContainer.innerHTML = "<p class='no-notes'>No notes yet :(</p>";
+					notesContainer.innerHTML += "<p class='add-from-here'>Add from here =></p>";
+
+				} else {
+					snap.forEach(function (dbNote) {
+						renderNote(dbNote);
+					});
+				}
 
 				hideSpinner();
 				addEventListenerToNotes();
@@ -128,8 +142,10 @@ initApp = function() {
 
 			//deleting note
 			function deleteNote(noteId) {
-				if (confirm('Delete this note?'))
+				if (confirm('Delete this note?')){
 					dbRefNote.child(noteId).remove();
+					showMessage("Your note deleted.");
+				}
 				else
 					return;
 			};
@@ -139,12 +155,17 @@ initApp = function() {
 				noteFullContainer.classList.remove('note-full-container-visible');
 				body.classList.remove('overflow-hidden');
 				saveChangeBtn.style.display = "none";
+				dblClickMsg.style.display = "block";
+				dblclick = 0;
 			};
 
 			// show add new note container
 			function showAddNewNoteContainer() {
 				addNewNoteContainer.classList.add('add-new-note-container-visible');
 				body.classList.add('overflow-hidden');
+				setTimeout(function(){
+					newNoteContent.focus();
+				}, 500);
 			};
 
 			// hide add new note container
@@ -167,6 +188,8 @@ initApp = function() {
 
 					newNote.value = "";
 
+					showMessage("Your new note has been added");
+
 				} else
 					console.log(newNoteContent + " empty value");
 			};
@@ -186,6 +209,12 @@ initApp = function() {
 			function showUpdateNoteContainer() {
 				const noteId = this.id;
 
+				dblclick +=1;
+
+				if (dblclick > 1) {
+					return;
+				}
+
 				const textarea = document.createElement('textarea');
 				const currentNoteContent = noteFullContent.innerText;
 				textarea.innerHTML = currentNoteContent;
@@ -197,6 +226,7 @@ initApp = function() {
 
 				textarea.focus();
 
+				dblClickMsg.style.display = "none";
 				saveChangeBtn.style.display = "block";
 
 				saveChangeBtn.addEventListener('click', function() {
@@ -205,13 +235,14 @@ initApp = function() {
 					if (updateNoteNode) {
 						updatedNote = document.getElementById('updated-note').value;
 					}
-
 					updateNote(updatedNote, noteId);
-				})
-			}
+				});
+			};
 
 			function updateNote(noteContent, noteId) {
 				saveChangeBtn.style.display = "none";
+				dblClickMsg.style.display = "block";
+				dblclick = 0;
 
 				const noteRef = dbRef.ref('users/' + uid + '/notes/' + noteId);
 				noteRef.set({
@@ -220,7 +251,17 @@ initApp = function() {
 				});
 
 				showNote(noteId);
-			}
+				showMessage("Your note has been updated");
+			};
+
+			function showMessage(messageContent) {
+				message.innerHTML = messageContent;
+				message.classList.add('showing');
+
+				setTimeout(function() {
+					message.classList.remove('showing');
+				}, 4100);
+			};
 		}
 
 	}, function(error) {
@@ -229,5 +270,14 @@ initApp = function() {
 };
 
 window.addEventListener('load', function() {
-	initApp()
+	initApp();
+	//registerServiceWorker();
 });
+
+
+//registering service worker
+/*function registerServiceWorker() {
+	if ('serviceWorker' in navigator) {
+	  navigator.serviceWorker.register('/service-worker.js');
+	}
+};*/
